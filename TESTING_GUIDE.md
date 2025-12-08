@@ -150,6 +150,11 @@ jobs:
 - Searches codebase for affected usage
 - Provides migration guidance or applies fixes
 
+**Note about `pull_request_target`:**
+- This workflow uses `pull_request_target` instead of `pull_request`
+- This allows Dependabot PRs to access secrets (required for `JUNIE_API_KEY`)
+- Safe because Junie Action validates permissions and checks out specific PR SHA
+
 ---
 
 ### 7. API Documentation (`api-docs.yml`)
