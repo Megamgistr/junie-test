@@ -1,0 +1,55 @@
+# Dependency Update Assistant
+name: Dependency Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    # Only run on dependency update PRs
+    if: |
+      github.event.pull_request.user.login == 'dependabot[bot]' ||
+      contains(github.event.pull_request.title, 'deps:') ||
+      contains(github.event.pull_request.labels.*.name, 'dependencies')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: JetBrains/junie-github-action@v0
+        with:
+          junie_api_key: ${{ secrets.JUNIE_API_KEY }}
+          use_single_comment: "true"
+          prompt: |
+            Review this dependency update.
+
+            **Analysis:**
+            1. Identify changed dependencies (package.json, requirements.txt, go.mod)
+            2. Find CHANGELOG/migration guides
+            3. Identify breaking changes and deprecations
+            4. Search codebase for usage of changed APIs
+            5. Determine impact on our code
+
+            **Provide review:**
+            ## 📦 Dependency Update Review
+            **Updated:** [package] `v1.0.0` → `v2.0.0`
+
+            **Changes:**
+            - ✨ New features: [list]
+            - ⚠️ Breaking changes: [list]
+            - 🔧 Bug fixes: [list]
+
+            **Impact on our code:**
+            [Files/areas affected and what needs to change]
+
+            **Links:** [Changelog] | [Migration guide]
+
+            **Apply fixes only if easy:**
+            - No breaking changes → Don't modify files
+            - Simple fix (1-2 files) → Update code for breaking changes
+            - Complex migration → Don't modify files, only provide analysis

@@ -1,0 +1,59 @@
+# Fix Failing CI Tests
+name: Fix CI Failures
+
+on:
+  workflow_run:
+    workflows: ["CI"]  # Replace with your CI workflow name
+    types: [completed]
+
+jobs:
+  analyze-failure:
+    if: github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      checks: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
+          fetch-depth: 1
+
+      - uses: JetBrains/junie-github-action@v0
+        with:
+          junie_api_key: ${{ secrets.JUNIE_API_KEY }}
+          allowed_mcp_servers: "mcp_github_checks_server"
+          use_single_comment: "true"
+          prompt: |
+            CI workflow "${{ github.event.workflow_run.name }}" failed. Diagnose and fix if possible.
+
+            **Analysis:**
+            1. Use `get_pr_failed_checks_info` MCP tool to fetch error logs
+            2. Identify failing step and error message
+            3. Determine root cause (test/build error, timeout, flaky test)
+            4. Check recent commits that might have caused it
+
+            **Provide diagnosis:**
+            ## 🔴 CI Failure Analysis
+            **Failed step:** [name]
+            **Error:** [message]
+            **Root cause:** [1-2 sentences]
+
+            ## 🔧 Proposed Fix
+            [Description]
+
+            ## 📝 Files to Change
+            - `path/file`: [what needs to change]
+
+            ## 🧪 Test Locally
+            [command to verify fix]
+
+            **Fix simple issues only:**
+            - Test failures: Fix failed assertion
+            - Build errors: Add missing dependency or fix syntax
+            - Timeouts: Optimize performance or increase limit
+            - Flaky tests: Add retry logic or fix race condition
+
+            Only provide analysis without modifying files.
