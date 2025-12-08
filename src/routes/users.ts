@@ -22,6 +22,17 @@ export async function getUserById(id: string) {
 }
 
 /**
+ * Get user by Name
+ * @route GET /api/users/:name
+ * @param {string} name - User Name
+ * @returns {User} User object
+ */
+export async function getUserByName(name: string) {
+    // TODO: Implement user lookup
+    return null;
+}
+
+/**
  * Create new user
  * @route POST /api/users
  * @param {CreateUserRequest} body - User data
