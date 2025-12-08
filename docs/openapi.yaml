@@ -1,0 +1,237 @@
+openapi: 3.1.0
+info:
+  title: Example Service API
+  version: 1.0.0
+  description: |
+    OpenAPI definition generated from source annotations in src/routes/** as of 2025-12-08.
+    All endpoints currently require Bearer token authentication.
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+security:
+  - bearerAuth: []
+paths:
+  /api/users:
+    get:
+      summary: Get all users
+      description: Returns a list of all users.
+      operationId: listUsers
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: A JSON array of user objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+              examples:
+                sample:
+                  summary: Example user list
+                  value:
+                    - id: '123'
+                      name: John Doe
+                      email: john@example.com
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    post:
+      summary: Create new user
+      description: Creates a new user with the provided data.
+      operationId: createUser
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+            examples:
+              sample:
+                summary: Example create request
+                value:
+                  name: Jane Smith
+                  email: jane@example.com
+      responses:
+        '201':
+          description: Created user returned on success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                sample:
+                  summary: Example created user
+                  value:
+                    id: '456'
+                    name: Jane Smith
+                    email: jane@example.com
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
+  /api/users/{id}:
+    get:
+      summary: Get user by ID
+      description: Returns a user by unique identifier.
+      operationId: getUserById
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: User ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single user object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                sample:
+                  summary: Example user
+                  value:
+                    id: '123'
+                    name: John Doe
+                    email: john@example.com
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+  /api/users/{name}:
+    get:
+      summary: Get user by name
+      description: |
+        Returns a user by name. Note: This path conflicts with /api/users/{id} in many routers.
+        Consider using a distinct sub-path (e.g., /api/users/by-name/{name}).
+      operationId: getUserByName
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: User name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single user object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    User:
+      type: object
+      required: [id, name, email]
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the user.
+          example: '123'
+        name:
+          type: string
+          description: Full name of the user.
+          example: John Doe
+        email:
+          type: string
+          format: email
+          description: Email address of the user.
+          example: john@example.com
+    CreateUserRequest:
+      type: object
+      required: [name, email]
+      properties:
+        name:
+          type: string
+          description: Full name for the new user.
+          example: Jane Smith
+        email:
+          type: string
+          format: email
+          description: Email for the new user. Must be unique.
+          example: jane@example.com
+    ErrorResponse:
+      type: object
+      required: [error, message, status]
+      properties:
+        error:
+          type: string
+          description: Error code string.
+          example: NotFound
+        message:
+          type: string
+          description: Human readable error message.
+          example: User not found
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 404
+  responses:
+    BadRequestError:
+      description: The request was invalid or cannot be otherwise served.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            validationError:
+              value:
+                error: BadRequest
+                message: "Invalid email format"
+                status: 400
+    UnauthorizedError:
+      description: Missing or invalid authentication.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            missingAuth:
+              value:
+                error: Unauthorized
+                message: "Bearer token required"
+                status: 401
+    NotFoundError:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            userNotFound:
+              value:
+                error: NotFound
+                message: "User not found"
+                status: 404
+    ConflictError:
+      description: Resource already exists or is in a conflicting state.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            emailExists:
+              value:
+                error: Conflict
+                message: "Email already exists"
+                status: 409
