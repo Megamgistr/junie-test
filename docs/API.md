@@ -31,6 +31,21 @@ Get a specific user by ID.
 }
 ```
 
+### GET /api/users/:name
+Get a specific user by name. Added in vNext.
+
+**Parameters:**
+- `name` (string) - User name
+
+**Response:**
+```json
+{
+  "id": "123",
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+```
+
 ## Authentication
 
 All endpoints require Bearer token authentication.
