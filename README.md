@@ -15,7 +15,6 @@ This repository contains test workflows extracted from the [Junie GitHub Action 
    - `fix-ci.yml` - Analyze and fix CI failures
    - `secret-audit.yml` - Scan for accidentally committed secrets
    - `dependency-review.yml` - Review dependency updates
-   - `api-docs.yml` - Generate API documentation
 
 ## Testing
 
@@ -33,9 +32,6 @@ Push code or open a PR - commits will be scanned for secrets.
 
 ### Dependency Updates
 Create a PR with dependency changes (or let Dependabot do it).
-
-### API Documentation
-Push changes to `src/routes/**`, `src/controllers/**`, or `src/api/**` on main.
 
 ## Sample Files
 

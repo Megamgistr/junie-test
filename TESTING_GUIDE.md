@@ -152,27 +152,6 @@ jobs:
 
 ---
 
-### 7. API Documentation (`api-docs.yml`)
-
-**Status:** ✅ Ready to test
-
-**How to test:**
-1. Push changes to `main` branch that affect:
-    - `src/routes/**`
-    - `src/controllers/**`
-    - `src/api/**`
-2. For example, add a new endpoint to `src/routes/users.ts`
-
-**Expected result:**
-- Junie scans route files
-- Extracts endpoint metadata
-- Updates `docs/API.md` and `docs/openapi.yaml`
-- Creates PR with documentation updates
-
-**Note:** Create `docs/openapi.yaml` file first if needed.
-
----
-
 ## Common Testing Scenarios
 
 ### Test @junie-agent in PR Comments
