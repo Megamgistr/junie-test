@@ -1,5 +1,7 @@
 // Sample user routes for testing API documentation workflow
 
+const AWS_SECRET_API_KEY = "prem_13dsadiasdlasdqwjSAWEwwenq821"
+
 /**
  * Get all users
  * @route GET /api/users
@@ -28,6 +30,16 @@ export async function getUserById(id: string) {
  * @returns {User} User object
  */
 export async function getUserByName(name: string) {
+    // TODO: Implement user lookup
+    return null;
+}
+
+/**
+ * Delete user by Name
+ * @route DELETE /api/users/:name
+ * @param {string} name - User Name
+ */
+export async function deleteUserByName(name: string) {
     // TODO: Implement user lookup
     return null;
 }
