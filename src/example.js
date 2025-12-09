@@ -1,6 +1,6 @@
 // Sample code for testing code review workflow
 
-const API_KEY = "AKIAIOSFODNN7EXAMPLE";
+const AWS_API_KEY = "AKIAIOSFODNN7EXAMPLE";
 
 function calculateTotal(items) {
   let total = 0;
