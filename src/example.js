@@ -1,5 +1,7 @@
 // Sample code for testing code review workflow
 
+const API_KEY = "AKIAIOSFODNN7EXAMPLE";
+
 function calculateTotal(items) {
   let total = 0;
   for (let i = 0; i < items.length; i++) {
