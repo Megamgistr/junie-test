@@ -42,3 +42,14 @@ export async function createUser(body: any) {
   // TODO: Implement user creation
   return null;
 }
+
+/**
+ * Delete user by Name
+ * @route DELETE /api/users/:name
+ * @param {string} name - User Name
+ * @returns {boolean} Whether the user was deleted
+ */
+export async function deleteUserByName(name: string) {
+  // TODO: Implement user deletion logic
+  return false;
+}
