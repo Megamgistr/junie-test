@@ -19,7 +19,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: JetBrains/junie-github-action@main
+      - uses: JetBrains/junie-github-action@nikita.barkov/new-prompt-generation
         with:
           junie_api_key: ${{ secrets.JUNIE_API_KEY }}
           create_new_branch_for_pr: "true"
@@ -39,3 +39,6 @@ jobs:
             - Add "Added in vX.X" for new features
             - Only modify documentation files (README.md, docs/**)
             - If nothing to update, don't make changes
+            
+            Procedure:
+            Use gh pr diff ${{ github.event.pull_request.head.ref }} to get a diff of the PR. 

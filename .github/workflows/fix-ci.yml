@@ -21,7 +21,7 @@ jobs:
           ref: ${{ github.event.workflow_run.head_branch }}
           fetch-depth: 1
 
-      - uses: JetBrains/junie-github-action@main
+      - uses: JetBrains/junie-github-action@nikita.barkov/new-prompt-generation
         with:
           junie_api_key: ${{ secrets.JUNIE_API_KEY }}
           allowed_mcp_servers: "mcp_github_checks_server"
@@ -46,14 +46,5 @@ jobs:
 
             ## 📝 Files to Change
             - `path/file`: [what needs to change]
-
-            ## 🧪 Test Locally
-            [command to verify fix]
-
-            **Fix simple issues only:**
-            - Test failures: Fix failed assertion
-            - Build errors: Add missing dependency or fix syntax
-            - Timeouts: Optimize performance or increase limit
-            - Flaky tests: Add retry logic or fix race condition
 
             Only provide analysis without modifying files.
