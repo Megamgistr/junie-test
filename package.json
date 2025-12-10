@@ -4,7 +4,7 @@
   "description": "Test repository for Junie GitHub Action workflows",
   "main": "src/example.js",
   "scripts": {
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "node tests/run-tests.js"
   },
   "dependencies": {
     "express": "^4.18.0"
