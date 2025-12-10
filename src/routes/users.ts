@@ -44,7 +44,7 @@ export async function createUser(body: any) {
 }
 
 /**
- * Delete user by Name
+ * Delete user by it's Name
  * @route DELETE /api/users/:name
  * @param {string} name - User Name
  * @returns {boolean} Whether the user was deleted
