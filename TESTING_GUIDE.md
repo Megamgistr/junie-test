@@ -152,11 +152,27 @@ jobs:
 
 ---
 
+### 7. Automatic Merge Conflict Resolution (`resolve-conflicts.yml`)
+
+**Status:** ✅ Ready to test
+
+**How to test - Automatic resolution:**
+1. Create a branches from `main`:
+2. Update some file and push
+3. Create PR from `branch` to `main`
+4. Checkout to main and update same file with other change and push
+5. Workflow triggers automatically when you push to `main`
+
+---
+
 ## Common Testing Scenarios
 
 ### Test @junie-agent in PR Comments
 1. Open any PR
-2. Add a review comment: `@junie-agent can you add error handling here?`
+2. Add a comment with one of these:
+   - `@junie-agent can you add error handling here?`
+   - `@junie-agent resolve conflicts` (on PRs with conflicts)
+   - `@junie-agent refactor this function to be more readable`
 3. Junie should implement the requested change
 
 ### Test @junie-agent in PR Reviews
