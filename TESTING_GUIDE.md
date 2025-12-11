@@ -126,32 +126,6 @@ jobs:
 
 ---
 
-### 6. Dependency Review (`dependency-review.yml`)
-
-**Status:** ✅ Ready to test
-
-**How to test - Manual:**
-1. Create a new branch
-2. Edit `package.json`, update a dependency version:
-   ```json
-   "express": "^4.19.0"  // change to newer version
-   ```
-3. Open PR
-4. Workflow triggers if PR title/author matches conditions
-
-**How to test - With Dependabot:**
-1. Enable Dependabot in repository settings
-2. Wait for Dependabot to create a PR
-3. Workflow triggers automatically
-
-**Expected result:**
-- Junie reads changelog of updated package
-- Identifies breaking changes
-- Searches codebase for affected usage
-- Provides migration guidance or applies fixes
-
----
-
 ### 7. Automatic Merge Conflict Resolution (`resolve-conflicts.yml`)
 
 **Status:** ✅ Ready to test

@@ -25,7 +25,7 @@ jobs:
           create_new_branch_for_pr: "true"
           base_branch: "main"
           prompt: |
-            This PR was just merged. Update documentation to match code changes.
+            Review pr diff and update documentation to match code changes.
 
             **Check for outdated docs:**
             - README.md examples using changed APIs
