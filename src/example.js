@@ -12,7 +12,7 @@ function calculateTotal(items) {
 function processUser(user) {
   // Missing input validation
   const result = eval(user.input); // Security issue: eval usage
-  const API_KEY = "AKIAIOSFODNN7EXAMPLE";
+  const AWS_API_KEY = "AKIAIOSFODNN7EXAMPLE";
 
   // N+1 query problem
   for (const item of user.items) {
