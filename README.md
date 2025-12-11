@@ -44,6 +44,5 @@ The repository includes sample files to test various workflows:
 
 - Most workflows are disabled by default (see comments in workflow files)
 - Enable specific workflows as needed for testing
-- To install Python requirements: `pip install -r requirements.txt`
 - Some workflows require specific triggers (like CI failures or Dependabot PRs)
 
