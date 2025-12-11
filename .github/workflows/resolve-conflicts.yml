@@ -28,6 +28,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Print output 1
+        run: cat newfile.txt
+
+      - name: Print commits 1
+        run: git log -n 10
+
       - name: Run Junie
         id: junie
         uses: JetBrains/junie-github-action@main
@@ -35,10 +41,10 @@ jobs:
           junie_api_key: ${{ secrets.JUNIE_API_KEY }}
           resolve_conflicts: true
 
-      - name: Print output
+      - name: Print output 2
         run: cat newfile.txt
 
-      - name: Print commits
+      - name: Print commits 2
         run: git log -n 10
 
       - name: Upload project working directory as artifact
