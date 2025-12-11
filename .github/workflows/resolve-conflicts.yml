@@ -34,3 +34,14 @@ jobs:
         with:
           junie_api_key: ${{ secrets.JUNIE_API_KEY }}
           resolve_conflicts: true
+
+      - name: Upload project working directory as artifact
+        if: always() && steps.prepare.outputs.SHOULD_SKIP != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-working-directory
+          path: |
+            ${{ github.workspace }}
+          retention-days: 7
+          if-no-files-found: warn
+          include-hidden-files: true
