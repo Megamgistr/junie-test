@@ -19,11 +19,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: JetBrains/junie-github-action@nikita.barkov/new-prompt-generation
+      - uses: JetBrains/junie-github-action@main
         with:
           junie_api_key: ${{ secrets.JUNIE_API_KEY }}
           create_new_branch_for_pr: "true"
-          base_branch: "main"
           prompt: |
             Review pr diff and update documentation to match code changes.
 
