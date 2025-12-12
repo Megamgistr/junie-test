@@ -24,9 +24,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Checkout working branch
+      - name: Fetch branches
         run: |
           git fetch origin +${{ inputs.branch }}:refs/remotes/origin/${{ inputs.branch }}
+          git fetch origin +${{ inputs.merge_branch }}:refs/remotes/origin/${{ inputs.merge_branch }}
+
+      - name: Checkout working branch
+        run: |
           git checkout --no-track -B ${{ inputs.branch }} origin/${{ inputs.branch }}
 
       - name: Install Junie
@@ -93,8 +97,6 @@ jobs:
           name: workspace-after-merge
           path: |
             ${{ github.workspace }}
-            !${{ github.workspace }}/node_modules
-            !${{ github.workspace }}/.git
           retention-days: 7
           if-no-files-found: warn
           include-hidden-files: true
