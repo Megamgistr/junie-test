@@ -14,6 +14,8 @@ function processUser(user) {
   const result = eval(user.input); // Security issue: eval usage
   const AWS_API_KEY = "AKIAIOSFODNN7EXAMPLE";
 
+  console.log(`Processing with key: ${AWS_API_KEY}`)
+
   // N+1 query problem
   for (const item of user.items) {
     database.query(`SELECT * FROM products WHERE id = ${item.id}`); // SQL injection risk
