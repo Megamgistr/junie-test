@@ -26,7 +26,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
+
+      - name: Print output 1
+        run: cat newfile.txt
+
+      - name: Print commits 1
+        run: git log -n 10
 
       - name: Run Junie
         id: junie
@@ -34,3 +40,20 @@ jobs:
         with:
           junie_api_key: ${{ secrets.JUNIE_API_KEY }}
           resolve_conflicts: true
+
+      - name: Print output 2
+        run: cat newfile.txt
+
+      - name: Print commits 2
+        run: git log -n 10
+
+      - name: Upload project working directory as artifact
+        if: always() && steps.prepare.outputs.SHOULD_SKIP != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-working-directory
+          path: |
+            ${{ github.workspace }}
+          retention-days: 7
+          if-no-files-found: warn
+          include-hidden-files: true
