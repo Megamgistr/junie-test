@@ -11,6 +11,10 @@ on:
         description: 'Branch to merge'
         required: true
         default: 'main'
+      test_branch:
+        description: 'New test branch name (will be created from working branch)'
+        required: true
+        default: 'test-merge-branch'
 
 jobs:
   test-merge:
@@ -29,9 +33,9 @@ jobs:
           git fetch origin +${{ inputs.branch }}:refs/remotes/origin/${{ inputs.branch }}
           git fetch origin +${{ inputs.merge_branch }}:refs/remotes/origin/${{ inputs.merge_branch }}
 
-      - name: Checkout working branch
+      - name: Create test branch from working branch
         run: |
-          git checkout --no-track -B ${{ inputs.branch }} origin/${{ inputs.branch }}
+          git checkout --no-track -b ${{ inputs.test_branch }} origin/${{ inputs.branch }}
 
       - name: Configure git
         run: |
@@ -63,7 +67,7 @@ jobs:
 
       - name: Push changes
         run: |
-          git push --set-upstream origin ${{ inputs.branch }}
+          git push --set-upstream origin HEAD
 
       - name: Upload Junie working directory as artifact
         if: always()
