@@ -31,6 +31,17 @@ Get a specific user by ID.
 }
 ```
 
+### DELETE /api/users/:name
+Delete a user by their name. Added in vNext.
+
+**Parameters:**
+- `name` (string) - User Name
+
+**Response:**
+```json
+true
+```
+
 ## Authentication
 
 All endpoints require Bearer token authentication.
