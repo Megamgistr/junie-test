@@ -33,7 +33,7 @@ export async function getUserByName(name: string) {
 }
 
 /**
- * Update user by Name
+ * Update user by it's Name
  * @route PUT /api/users/:name
  * @param {string} name - User Name
  * @param {UpdateUserRequest} body - Partial user data to update
