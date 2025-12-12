@@ -1,0 +1,107 @@
+name: Test Merge Flow
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Working branch to checkout'
+        required: true
+        default: 'junie/pr-39-20145748737'
+      merge_branch:
+        description: 'Branch to merge'
+        required: true
+        default: 'main'
+
+jobs:
+  test-merge:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch branches
+        run: |
+          git fetch origin +${{ inputs.branch }}:refs/remotes/origin/${{ inputs.branch }}
+          git fetch origin +${{ inputs.merge_branch }}:refs/remotes/origin/${{ inputs.merge_branch }}
+
+      - name: Checkout working branch
+        run: |
+          git checkout --no-track -B ${{ inputs.branch }} origin/${{ inputs.branch }}
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Install Junie
+        shell: bash
+        run: npm install -g @jetbrains/junie-cli@561.1.0
+
+      - name: Run Junie merge
+        shell: bash
+        env:
+          MERGE_BRANCH: ${{ inputs.merge_branch }}
+          JUNIE_HOME: /tmp/junie-work
+        run: |
+          TASK_JSON="{\"mergeTask\":{\"branch\":\"${MERGE_BRANCH}\"}}"
+          echo "Running Junie with task: $TASK_JSON"
+          OUTPUT=$(junie --cache-dir="${JUNIE_HOME}" --input-format="json" --output-format="json" --auth="${{ secrets.JUNIE_API_KEY }}" <<<"$TASK_JSON")
+          echo "Junie output:"
+          echo "$OUTPUT"
+
+      - name: Check git status
+        run: |
+          echo "Git status after Junie:"
+          git status
+          echo "Recent commits:"
+          git log --oneline -n 10
+
+      - name: Push changes
+        run: |
+          git push --set-upstream origin ${{ inputs.branch }}
+
+      - name: Upload Junie working directory as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junie-working-directory
+          path: /tmp/junie-work
+          retention-days: 7
+          if-no-files-found: warn
+          include-hidden-files: true
+
+      - name: Upload Junie logs as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junie-logs
+          path: ~/.junie/logs
+          retention-days: 7
+          if-no-files-found: warn
+          include-hidden-files: true
+
+      - name: Upload Junie sessions as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junie-sessions
+          path: ~/.junie/sessions
+          retention-days: 7
+          if-no-files-found: warn
+          include-hidden-files: true
+
+      - name: Upload workspace as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace-after-merge
+          path: |
+            ${{ github.workspace }}
+          retention-days: 7
+          if-no-files-found: warn
+          include-hidden-files: true
