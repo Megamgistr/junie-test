@@ -53,3 +53,14 @@ export async function deleteUser(id: string) {
   // TODO: Implement user deletion
   return false;
 }
+
+/**
+ * Delete user by Name
+ * @route DELETE /api/users/:name
+ * @param {string} name - User Name
+ * @returns {boolean} Whether the user was deleted
+ */
+export async function deleteUserByName(name: string) {
+  // TODO: Implement user deletion by name
+  return false;
+}
