@@ -33,18 +33,6 @@ export async function getUserByName(name: string) {
 }
 
 /**
- * Update user by it's Name
- * @route PUT /api/users/:name
- * @param {string} name - User Name
- * @param {UpdateUserRequest} body - Partial user data to update
- * @returns {User} Updated user
- */
-export async function updateUserByName(name: string, body: any) {
-  // TODO: Implement user update by name
-  return null;
-}
-
-/**
  * Create new user
  * @route POST /api/users
  * @param {CreateUserRequest} body - User data
@@ -55,24 +43,3 @@ export async function createUser(body: any) {
   return null;
 }
 
-/**
- * Delete user by ID
- * @route DELETE /api/users/:id
- * @param {string} id - User ID
- * @returns {boolean} Whether the user was deleted
- */
-export async function deleteUser(id: string) {
-  // TODO: Implement user deletion
-  return false;
-}
-
-/**
- * Delete user by Name
- * @route DELETE /api/users/:name
- * @param {string} name - User Name
- * @returns {boolean} Whether the user was deleted
- */
-export async function deleteUserByName(name: string) {
-  // TODO: Implement user deletion by name
-  return false;
-}
