@@ -42,16 +42,16 @@ jobs:
           echo "All workflow_dispatch inputs:"
           echo '${{ toJSON(inputs) }}'
 
-#      - name: Checkout repository
-#        uses: actions/checkout@v4
-#        with:
-#          fetch-depth: 1
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
-#      - name: Run Junie
-#        id: junie
-#        uses: JetBrains/junie-github-action@nikita.barkov/jira-integration
-#        with:
-#          junie_api_key: ${{ secrets.JUNIE_API_KEY }}
-#          jira_base_url: ${{ secrets.JIRA_BASE_URL }}
-#          jira_email: ${{ secrets.JIRA_EMAIL }}
-#          jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
+      - name: Run Junie
+        id: junie
+        uses: JetBrains/junie-github-action@nikita.barkov/jira-integration
+        with:
+          junie_api_key: ${{ secrets.JUNIE_API_KEY }}
+          jira_base_url: ${{ secrets.JIRA_BASE_URL }}
+          jira_email: ${{ secrets.JIRA_EMAIL }}
+          jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
