@@ -20,6 +20,14 @@ on:
         description: 'Jira issue description'
         required: false
         type: string
+      issue_comments:
+        description: 'Jira issue comments'
+        required: false
+        type: string
+      issue_attachments:
+        description: 'Jira issue attachments'
+        required: false
+        type: string
 
 jobs:
   junie:
