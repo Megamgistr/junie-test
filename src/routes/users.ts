@@ -44,9 +44,9 @@ export async function createUser(body: any) {
 }
 
 /**
- * Update user by it's Name
+ * Update user by name
  * @route PUT /api/users/:name
- * @param {string} name - User Name
+ * @param {string} name - User name
  * @param {UpdateUserRequest} body - Updated user data
  * @returns {User} Updated user
  */
