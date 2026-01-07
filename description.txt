@@ -1,0 +1,10 @@
+ A dark-themed web UI screenshot of the Junie application on a page titled "CLI Tokens".
+
+ Key elements visible:
+ - Header: Junie logo at top-left; a "Docs" button and a user profile name at top-right (name not included here).
+ - Section: "Create new Token" with a text input labeled "Enter Token name", a green "Create Token" button, and a gray "GitHub Action connect" button. A red arrow points to the "GitHub Action connect" button, suggesting it as the next action.
+ - Section: "Your Tokens" showing a table with one token listed as "gh-token" and a red "Delete" button on the right.
+ - Section: "Quickstart" → "Installation" with tabs for "NPM" (selected) and "Homebrew".
+ - Subsection: "NPM install" displaying the command: npm install -g @jetbrains/junie-cli
+
+ Overall look: minimal, dark background with light text and accent buttons, focused on managing CLI tokens and highlighting the GitHub Action connection flow.
