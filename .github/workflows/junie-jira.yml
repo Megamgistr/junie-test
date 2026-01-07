@@ -38,7 +38,7 @@ jobs:
 
       - name: Run Junie
         id: junie
-        uses: JetBrains/junie-github-action@main
+        uses: JetBrains/junie-github-action@nikita.barkov/jira-integration
         with:
           junie_api_key: ${{ secrets.JUNIE_API_KEY }}
           jira_base_url: ${{ secrets.JIRA_BASE_URL }}
