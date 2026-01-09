@@ -37,11 +37,6 @@ jobs:
     if: ${{ inputs.action == 'jira_event' }}
 
     steps:
-      - name: Print workflow inputs
-        run: |
-          echo "All workflow_dispatch inputs:"
-          echo '${{ toJSON(inputs) }}'
-
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -49,7 +44,7 @@ jobs:
 
       - name: Run Junie
         id: junie
-        uses: JetBrains/junie-github-action@nikita.barkov/jira-integration
+        uses: JetBrains/junie-github-action@main
         with:
           junie_api_key: ${{ secrets.JUNIE_API_KEY }}
           jira_base_url: ${{ secrets.JIRA_BASE_URL }}
