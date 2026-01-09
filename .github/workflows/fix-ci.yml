@@ -48,3 +48,13 @@ jobs:
             - `path/file`: [what needs to change]
 
             Only provide analysis without modifying files.
+
+            - name: Upload Junie sessions as artifact
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: junie
+          path: ~/.junie
+          retention-days: 7
+          if-no-files-found: warn
+          include-hidden-files: true

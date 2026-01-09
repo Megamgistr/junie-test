@@ -4,12 +4,13 @@
   "description": "Test repository for Junie GitHub Action workflows",
   "main": "src/example.js",
   "scripts": {
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "jest"
   },
   "dependencies": {
     "express": "^4.18.0"
   },
   "devDependencies": {
-    "eslint": "^8.0.0"
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0"
   }
 }
