@@ -1,13 +1,14 @@
 // Sample user routes for testing API documentation workflow
 
+import { UsersController } from '../controllers/usersController';
+
 /**
  * Get all users
  * @route GET /api/users
  * @returns {User[]} Array of users
  */
 export async function getUsers() {
-  // TODO: Implement user fetching
-  return [];
+  return UsersController.getAllUsers();
 }
 
 /**
@@ -17,8 +18,7 @@ export async function getUsers() {
  * @returns {User} User object
  */
 export async function getUserById(id: string) {
-  // TODO: Implement user lookup
-  return null;
+  return UsersController.getUserById(id);
 }
 
 /**
@@ -28,8 +28,7 @@ export async function getUserById(id: string) {
  * @returns {User} User object
  */
 export async function getUserByName(name: string) {
-    // TODO: Implement user lookup
-    return null;
+  return UsersController.getUserByName(name);
 }
 
 /**
@@ -39,8 +38,7 @@ export async function getUserByName(name: string) {
  * @returns {User} Created user
  */
 export async function createUser(body: any) {
-  // TODO: Implement user creation
-  return null;
+  return UsersController.createUser(body);
 }
 
 /**
@@ -51,7 +49,6 @@ export async function createUser(body: any) {
  * @returns {User} Updated user
  */
 export async function updateUserByName(name: string, body: any) {
-  // TODO: Implement user update
-  return null;
+  return UsersController.updateUserByName(name, body);
 }
 
