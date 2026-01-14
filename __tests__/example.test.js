@@ -10,9 +10,8 @@ describe('Example Tests', () => {
     expect(calculateTotal(items)).toBe(60);
   });
 
-  test('THIS TEST SHOULD FAIL - intentional failure to trigger fix-ci.yml', () => {
-    // This test is designed to fail to test the CI failure workflow
-    expect(2 + 2).toBe(5); // Intentionally wrong
+  test('THIS TEST SHOULD NOW PASS', () => {
+    expect(2 + 2).toBe(4);
   });
 
   test('calculateTotal should handle empty array', () => {
