@@ -31,6 +31,15 @@ Get a specific user by ID.
 }
 ```
 
+### DELETE /api/users/:name
+Delete a user by name.
+
+**Parameters:**
+- `name` (string) - User Name
+
+**Response:**
+`204 No Content`
+
 ## Authentication
 
 All endpoints require Bearer token authentication.

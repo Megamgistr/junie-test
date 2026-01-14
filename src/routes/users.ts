@@ -28,8 +28,8 @@ export async function getUserById(id: string) {
  * @returns {User} User object
  */
 export async function getUserByName(name: string) {
-    // TODO: Implement user lookup
-    return null;
+  // TODO: Implement user lookup
+  return null;
 }
 
 /**
@@ -44,7 +44,7 @@ export async function createUser(body: any) {
 }
 
 /**
- * Update user by it's Name
+ * Update user by its Name
  * @route PUT /api/users/:name
  * @param {string} name - User Name
  * @param {UpdateUserRequest} body - Updated user data
@@ -53,5 +53,16 @@ export async function createUser(body: any) {
 export async function updateUserByName(name: string, body: any) {
   // TODO: Implement user update
   return null;
+}
+
+/**
+ * Delete user by Name
+ * @route DELETE /api/users/:name
+ * @param {string} name - User Name
+ * @returns {void}
+ */
+export async function deleteUserByName(name: string) {
+  // TODO: Implement user deletion
+  return;
 }
 
