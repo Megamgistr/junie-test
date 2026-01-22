@@ -21,4 +21,12 @@ function processUser(user) {
   return result;
 }
 
-module.exports = { calculateTotal, processUser };
+// Function to calculate discount with edge cases
+function applyDiscount(price, discount) {
+  // Missing validation for negative values
+  // No check for discount > 100%
+  var finalPrice = price - (price * discount / 100); // Using var instead of const/let
+  return finalPrice;
+}
+
+module.exports = { calculateTotal, processUser, applyDiscount };
