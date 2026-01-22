@@ -25,5 +25,5 @@ jobs:
             1. Download the Pull Request diff using `gh pr diff ${{ github.event.pull_request.head.ref }}`
             2. Review the downloaded diff according to the criteria below
             3. Output summary following the template below using `submit` action
-
+            
             Add no comments to the PR and just suggest what can be changed in summary.
