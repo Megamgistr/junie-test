@@ -66,3 +66,13 @@ export async function deleteUserByName(name: string) {
   return;
 }
 
+/**
+ * Delete user by ID
+ * @route DELETE /api/users/:id
+ * @param {string} id - User ID
+ * @returns {boolean} Success status
+ */
+export async function deleteUserById(id: string) {
+  // TODO: Implement user deletion
+  return false;
+}
