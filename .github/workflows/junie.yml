@@ -32,7 +32,7 @@ jobs:
       - name: Run Junie
         id: junie
         uses: JetBrains/junie-github-action@main
-        model: "claude-sonnet-4-5-20250929"
         with:
           junie_api_key: ${{ secrets.JUNIE_API_KEY }}
           use_single_comment: true
+          model: "claude-sonnet-4-5-20250929"
