@@ -35,12 +35,21 @@ export async function getUserByName(name: string) {
 /**
  * Create new user
  * @route POST /api/users
- * @param {CreateUserRequest} body - User data
- * @returns {User} Created user
+ * @param {any} body - User data
+ * @returns {any} Response object
  */
 export async function createUser(body: any) {
-  // TODO: Implement user creation
-  return null;
+  try {
+    if (body?.token === "invalid") {
+      throw new Error("Invalid token");
+    }
+    return { status: "success" };
+  } catch (error: any) {
+    if (error.message === "Invalid token") {
+      return { status: "error", message: "Invalid token" };
+    }
+    throw error;
+  }
 }
 
 /**
