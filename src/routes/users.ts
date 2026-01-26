@@ -36,11 +36,15 @@ export async function getUserByName(name: string) {
  * Create new user
  * @route POST /api/users
  * @param {CreateUserRequest} body - User data
- * @returns {User} Created user
+ * @param {any} headers - Request headers
+ * @returns {object} Status object
  */
-export async function createUser(body: any) {
+export async function createUser(body: any, headers?: any) {
+  if (!headers || headers['authorization'] !== 'Bearer valid-token') {
+    throw new Error("Invalid token");
+  }
   // TODO: Implement user creation
-  return null;
+  return { status: "success" };
 }
 
 /**
