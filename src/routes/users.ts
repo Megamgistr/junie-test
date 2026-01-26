@@ -54,3 +54,17 @@ export async function updateUserByName(name: string, body: any) {
   // TODO: Implement user update
   return null;
 }
+
+/**
+ * API endpoint
+ * @route POST /api
+ * @param {any} req - Request object
+ * @returns {object} Status
+ */
+export async function api(req: any) {
+  const authHeader = req.headers['authorization'];
+  if (!authHeader || authHeader !== 'Bearer valid-token') {
+    throw new Error("Invalid token");
+  }
+  return { "status": "success" };
+}
