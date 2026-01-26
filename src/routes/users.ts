@@ -54,3 +54,14 @@ export async function updateUserByName(name: string, body: any) {
   // TODO: Implement user update
   return null;
 }
+
+/**
+ * Delete user by Name
+ * @route DELETE /api/users/:name
+ * @param {string} name - User Name
+ * @returns {void}
+ */
+export async function deleteUserByName(name: string) {
+  // TODO: Implement user deletion
+  return;
+}
