@@ -31,6 +31,16 @@ Get a specific user by ID.
 }
 ```
 
+### POST /api
+Generic API endpoint.
+
+**Response:**
+```json
+{
+  "status": "success"
+}
+```
+
 ## Authentication
 
 All endpoints require Bearer token authentication.
