@@ -8,23 +8,12 @@ const {
 
 describe('User Repositories Routes', () => {
   describe('GET /api/user-repositories', () => {
-    test('getUserRepositories should return an array', async () => {
-      const result = await getUserRepositories();
-      expect(Array.isArray(result)).toBe(true);
-    });
-
-    test('getUserRepositories should return empty array initially', async () => {
-      const result = await getUserRepositories();
-      expect(result).toEqual([]);
+    test('getUserRepositories should throw NotImplementedError', async () => {
+      await expect(getUserRepositories()).rejects.toThrow('NotImplementedError');
     });
   });
 
   describe('GET /api/user-repositories/:id', () => {
-    test('getUserRepositoryById should accept an id parameter', async () => {
-      const result = await getUserRepositoryById('123');
-      expect(result).toBeDefined();
-    });
-
     test('getUserRepositoryById should return null for non-existent repository', async () => {
       const result = await getUserRepositoryById('non-existent-id');
       expect(result).toBeNull();
@@ -64,19 +53,8 @@ describe('User Repositories Routes', () => {
   });
 
   describe('DELETE /api/user-repositories/:id', () => {
-    test('deleteUserRepository should accept an id parameter', async () => {
-      const result = await deleteUserRepository('123');
-      expect(result).toBeDefined();
-    });
-
-    test('deleteUserRepository should return boolean', async () => {
-      const result = await deleteUserRepository('123');
-      expect(typeof result).toBe('boolean');
-    });
-
-    test('deleteUserRepository should return true for successful deletion', async () => {
-      const result = await deleteUserRepository('existing-id');
-      expect(result).toBe(true);
+    test('deleteUserRepository should throw NotImplementedError', async () => {
+      await expect(deleteUserRepository('123')).rejects.toThrow('NotImplementedError');
     });
   });
 });

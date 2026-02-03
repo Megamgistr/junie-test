@@ -7,7 +7,7 @@
  */
 export async function getUserRepositories() {
   // TODO: Implement user repositories fetching
-  return [];
+  throw new Error('NotImplementedError: getUserRepositories is not yet implemented');
 }
 
 /**
@@ -52,5 +52,5 @@ export async function updateUserRepository(id: string, body: any) {
  */
 export async function deleteUserRepository(id: string) {
   // TODO: Implement user repository deletion
-  return true;
+  throw new Error('NotImplementedError: deleteUserRepository is not yet implemented');
 }
