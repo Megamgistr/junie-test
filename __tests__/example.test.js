@@ -12,7 +12,7 @@ describe('Example Tests', () => {
 
   test('THIS TEST SHOULD FAIL - intentional failure to trigger fix-ci.yml', () => {
     // This test is designed to fail to test the CI failure workflow
-    expect(2 + 2).toBe(5); // Intentionally wrong
+    expect(2 + 2).toBe(4); // Fixed
   });
 
   test('calculateTotal should handle empty array', () => {
