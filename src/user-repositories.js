@@ -84,20 +84,11 @@ router.put('/:id', (req, res) => {
 });
 
 // PATCH - partial update of an existing user repository
-router.patch('/:id', (req, res) => {
-  const id = parseInt(req.params.id);
-  const updates = req.body;
-  
-  const repositoryIndex = userRepositories.findIndex(repo => repo.id === id);
-  
-  if (repositoryIndex === -1) {
-    return res.status(404).json({ error: 'Repository not found' });
-  }
-  
   const updatedRepository = {
     ...userRepositories[repositoryIndex],
     ...updates,
     id, // Ensure ID cannot be changed
+    createdAt: userRepositories[repositoryIndex].createdAt, // Ensure createdAt cannot be changed
     updatedAt: new Date().toISOString()
   };
   
