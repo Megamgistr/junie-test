@@ -1,1 +1,2 @@
 Main value test
+new line
