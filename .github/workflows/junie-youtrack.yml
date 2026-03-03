@@ -47,7 +47,7 @@ jobs:
 
       - name: Run Junie
         id: junie
-        uses: JetBrains/junie-github-action@main
+        uses: JetBrains/junie-github-action@nikita.barkov/youtrack
         with:
           junie_api_key: ${{ secrets.JUNIE_API_KEY }}
           youtrack_token: ${{ secrets.YOUTRACK_TOKEN }}
