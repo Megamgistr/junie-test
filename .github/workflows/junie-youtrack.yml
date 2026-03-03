@@ -1,0 +1,53 @@
+name: Junie Youtrack Integration
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action type'
+        default: 'youtrack_event'
+        required: true
+        type: string
+      issue_id:
+        description: 'YouTrack issue ID'
+        required: true
+      issue_url:
+        description: 'Full URL of the YouTrack issue'
+        required: true
+      issue_title:
+        description: 'Issue summary/title'
+        required: true
+      issue_description:
+        description: 'Issue description'
+        required: false
+      issue_comments:
+        description: 'Issue comments'
+        required: false
+      issue_attachments:
+        description: 'JSON array of attachment URLs'
+        required: false
+      youtrack_base_url:
+        description: 'Base URL of the YouTrack instance'
+        required: true
+
+jobs:
+  junie:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    if: ${{ inputs.action == 'youtrack_event' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Run Junie
+        id: junie
+        uses: JetBrains/junie-github-action@main
+        with:
+          junie_api_key: ${{ secrets.JUNIE_API_KEY }}
+          youtrack_token: ${{ secrets.YOUTRACK_TOKEN }}
