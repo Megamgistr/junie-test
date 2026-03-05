@@ -1,1 +1,1 @@
-dsadasdasd
+This is a test file for the `junie-test` repository, used to verify the pull request workflow and AI-driven code review processes.
