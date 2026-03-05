@@ -20,12 +20,9 @@ on:
       issue_description:
         description: 'Issue description'
         required: false
-      issue_comments:
-        description: 'Issue comments'
-        required: false
-      issue_attachments:
-        description: 'JSON array of attachment URLs'
-        required: false
+      trigger_comment:
+         description: 'Trigger comment'
+         required: false
       youtrack_base_url:
         description: 'Base URL of the YouTrack instance'
         required: true
