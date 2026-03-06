@@ -28,10 +28,6 @@ on:
         description: 'Issue comments, formatted as "author at date:\ntext"'
         required: false
         type: string
-      issue_attachments:
-        description: 'JSON array of attachment'
-        required: false
-        type: string
       trigger_comment:
         description: 'Optional comment that triggered Junie (used as user instruction)'
         required: false
