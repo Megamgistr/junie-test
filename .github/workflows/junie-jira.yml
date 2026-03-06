@@ -26,6 +26,10 @@ on:
       issue_attachments:
         description: 'Jira issue attachments'
         required: false
+      trigger_comment:
+        description: 'Comment that triggered Junie (used as user instruction)'
+        required: false
+        type: string
 
 jobs:
   junie:
