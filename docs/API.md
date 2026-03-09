@@ -31,6 +31,48 @@ Get a specific user by ID.
 }
 ```
 
+### PUT /api/users/:name
+Update a specific user by Name.
+
+**Parameters:**
+- `name` (string) - User Name
+
+**Request Body:**
+```json
+{
+  "email": "new-email@example.com"
+}
+```
+
+**Response:**
+```json
+{
+  "name": "John Doe",
+  "email": "new-email@example.com"
+}
+```
+
+### PATCH /api/users/:name
+Partially update a specific user by Name.
+
+**Parameters:**
+- `name` (string) - User Name
+
+**Request Body:**
+```json
+{
+  "email": "updated-email@example.com"
+}
+```
+
+**Response:**
+```json
+{
+  "name": "John Doe",
+  "email": "updated-email@example.com"
+}
+```
+
 ## Authentication
 
 All endpoints require Bearer token authentication.
