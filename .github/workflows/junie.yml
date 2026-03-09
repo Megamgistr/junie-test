@@ -33,5 +33,5 @@ jobs:
         id: junie
         uses: JetBrains/junie-github-action@main
         with:
-          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          openrouter_api_key: ${{ secrets.OPENAI_API_KEY }}
           use_single_comment: true
