@@ -38,6 +38,7 @@ Create a PR with dependency changes (or let Dependabot do it).
 The repository includes sample files to test various workflows:
 - `src/` - Sample source code
 - `docs/` - Sample documentation
+- `File.kt` - Kotlin sample with `Cat` class
 - Test files to trigger different workflows it is test
 
 ## Notes
