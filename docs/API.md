@@ -31,6 +31,45 @@ Get a specific user by ID.
 }
 ```
 
+## User Repositories API
+
+### GET /api/user-repositories
+Get list of all user repositories.
+
+**Response:**
+```json
+[
+  {
+    "id": "repo-1",
+    "name": "my-cool-project",
+    "url": "https://github.com/user/my-cool-project"
+  }
+]
+```
+
+### POST /api/user-repositories
+Create a new user repository.
+
+**Body:**
+```json
+{
+  "name": "new-repo",
+  "description": "A new repository"
+}
+```
+
+### PUT /api/user-repositories/:id
+Update an existing user repository.
+
+**Parameters:**
+- `id` (string) - Repository ID
+
+### DELETE /api/user-repositories/:id
+Delete a user repository.
+
+**Parameters:**
+- `id` (string) - Repository ID
+
 ## Authentication
 
 All endpoints require Bearer token authentication.
