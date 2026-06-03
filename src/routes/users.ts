@@ -22,14 +22,14 @@ export async function getUserById(id: string) {
 }
 
 /**
- * Get user by Name
+ * Get user by name
  * @route GET /api/users/:name
- * @param {string} name - User Name
+ * @param {string} name - User name
  * @returns {User} User object
  */
 export async function getUserByName(name: string) {
-    // TODO: Implement user lookup
-    return null;
+  // TODO: Implement user lookup
+  return null;
 }
 
 /**
@@ -44,9 +44,9 @@ export async function createUser(body: any) {
 }
 
 /**
- * Update user by it's Name
+ * Update user by its name
  * @route PUT /api/users/:name
- * @param {string} name - User Name
+ * @param {string} name - User name
  * @param {UpdateUserRequest} body - Updated user data
  * @returns {User} Updated user
  */
